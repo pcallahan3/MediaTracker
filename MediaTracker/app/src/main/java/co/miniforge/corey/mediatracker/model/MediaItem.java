@@ -20,6 +20,9 @@ public class MediaItem {
     public String description;
     public String url;
 
+
+    public MediaItemType type = MediaItemType.Generic;
+
     public MediaItem(JSONObject jsonObject){
         try{
             //Generate id based on the object instance (should work :D)
@@ -27,9 +30,27 @@ public class MediaItem {
             this.title = jsonObject.getString("title");
             this.description = jsonObject.getString("description");
             this.url = jsonObject.getString("url");
+
+
         } catch (Exception e){
             Log.e("toJSONError", String.format("There was an error: %s", e.getMessage()));
         }
+    }
+
+
+    public MediaItemType getTypeForInt(MediaItemType value){
+
+        switch(value){
+            case TV:
+                return MediaItemType.TV;
+            case Movie:
+                return MediaItemType.Movie;
+            default:
+                return MediaItemType.Generic;
+
+        }
+
+
     }
 
     public MediaItem(){
@@ -47,6 +68,8 @@ public class MediaItem {
             mediaItem.put("title", this.title);
             mediaItem.put("description", this.description);
             mediaItem.put("url", this.url);
+
+
         } catch (Exception e){
             Log.e("toJSONError", String.format("There was an error: %s", e.getMessage()));
         }

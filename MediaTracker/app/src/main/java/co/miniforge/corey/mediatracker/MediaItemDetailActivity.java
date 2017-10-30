@@ -3,6 +3,7 @@ package co.miniforge.corey.mediatracker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 
 import org.json.JSONObject;
 
@@ -15,9 +16,17 @@ import co.miniforge.corey.mediatracker.model.MediaItem;
  * the code in MyListActivity)
  */
 public class MediaItemDetailActivity extends AppCompatActivity {
+
+    Button submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_item_detail);
+
+
     }
+
+
+
 }
