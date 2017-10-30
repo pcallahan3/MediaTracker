@@ -3,6 +3,7 @@ package co.miniforge.corey.mediatracker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import org.json.JSONObject;
@@ -25,6 +26,18 @@ public class MediaItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_media_item_detail);
 
 
+    }
+
+    void bindData() {
+        submit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                //Create new empty media item
+                MediaItem item = new MediaItem();
+
+            }
+        });
     }
 
 
