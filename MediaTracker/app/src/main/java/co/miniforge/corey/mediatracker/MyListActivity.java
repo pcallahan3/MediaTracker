@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -32,6 +33,11 @@ public class MyListActivity extends AppCompatActivity {
     FloatingActionButton add_media_item_button;
 
     MediaStorageUtil storageUtil;
+    TextView displayTitle;
+    TextView displayDescription;
+    TextView displayURL;
+
+
 
     List<MediaItem> mediaItems = new LinkedList<>();
 
@@ -49,16 +55,23 @@ public class MyListActivity extends AppCompatActivity {
         bindData();
 
         handleIntent();
+
+
     }
 
     void handleIntent(){
+
         if(getIntent() != null){
             Intent intent = getIntent();
 
             if(intent.hasExtra(mediaExtra)){
+
+
                 try {
                     JSONObject json = new JSONObject(intent.getStringExtra(mediaExtra));
                     MediaItem item = new MediaItem(json);
+
+
 
                     for(int i = 0; i < mediaItems.size(); i++){
                         if(mediaItems.get(i).id.equals(item.id)){
@@ -78,6 +91,12 @@ public class MyListActivity extends AppCompatActivity {
     void locateViews(){
         media_list_recycler = (RecyclerView) findViewById(R.id.media_list_recycler);
         add_media_item_button = (FloatingActionButton) findViewById(R.id.add_media_item_button);
+
+        displayTitle = (TextView) findViewById(R.id.mediaName);
+        displayDescription = (TextView) findViewById(R.id.mediaDescription);
+        displayURL = (TextView) findViewById(R.id.mediaURL);
+
+
     }
 
     void bindData(){
@@ -86,6 +105,7 @@ public class MyListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Create new empty media item
                 MediaItem item = new MediaItem();
+
                 mediaItems.add(item);
                 storageUtil.saveMediaData(mediaItems);
                 updateMediaItems(mediaItems);
