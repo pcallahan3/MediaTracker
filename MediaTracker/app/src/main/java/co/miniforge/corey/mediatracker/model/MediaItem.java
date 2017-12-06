@@ -47,8 +47,28 @@ public class MediaItem {
                 return MediaItemType.Generic;
 
         }
+    }
 
+    String getStringForType (MediaItemType type){
+        switch (type) {
+            case Movie:
+                return "Movie";
+            case TV:
+                return "TV";
+            default:
+                return "Generic";
+        }
+    }
 
+    MediaItemType getTypeForString(String value){
+        switch (value){
+            case "TV":
+                return  MediaItemType.TV;
+            case "Movie":
+                return  MediaItemType.Movie;
+            default:
+                return MediaItemType.Generic;
+        }
     }
 
     public MediaItem(){
@@ -73,5 +93,10 @@ public class MediaItem {
         }
 
         return mediaItem;
+    }
+
+
+    public void getTypeForString(){
+
     }
 }
