@@ -24,6 +24,7 @@ import java.util.List;
 import co.miniforge.corey.mediatracker.media_recycler.MediaRecyclerAdapter;
 import co.miniforge.corey.mediatracker.media_store.MediaStorageUtil;
 import co.miniforge.corey.mediatracker.model.MediaItem;
+import co.miniforge.corey.mediatracker.model.MediaItemSortHelper;
 
 public class MyListActivity extends AppCompatActivity {
     public static String mediaExtra = "mediaExtra";
@@ -33,6 +34,7 @@ public class MyListActivity extends AppCompatActivity {
     FloatingActionButton add_media_item_button;
 
     MediaStorageUtil storageUtil;
+    MediaItemSortHelper sortHelper;
     TextView displayTitle;
     TextView displayDescription;
     TextView displayURL;
@@ -80,7 +82,11 @@ public class MyListActivity extends AppCompatActivity {
                         }
                     }
 
-                    storageUtil.saveMediaData(mediaItems);
+
+
+                    sortHelper.sortByName(mediaItems);
+                    sortHelper.sortByName(mediaItems);
+
                 } catch (Exception e){
                     Log.e("handleIntentErr", String.format("Could not update item from intent: %s", e.getMessage()));
                 }
@@ -107,7 +113,10 @@ public class MyListActivity extends AppCompatActivity {
                 MediaItem item = new MediaItem();
 
                 mediaItems.add(item);
+
+
                 storageUtil.saveMediaData(mediaItems);
+                sortHelper.sortByName(mediaItems);
                 updateMediaItems(mediaItems);
             }
         });
@@ -153,6 +162,7 @@ public class MyListActivity extends AppCompatActivity {
                 break;
             }
         }
+
 
         storageUtil.saveMediaData(mediaItems);
         updateMediaItems(storageUtil.getMediaDataList());

@@ -10,6 +10,9 @@ import java.util.List;
 
 import co.miniforge.corey.mediatracker.R;
 import co.miniforge.corey.mediatracker.model.MediaItem;
+import co.miniforge.corey.mediatracker.model.MovieModel;
+import co.miniforge.corey.mediatracker.model.TVModel;
+import co.miniforge.corey.mediatracker.model.YouTubeModel;
 
 /**
  * Created by corey on 10/15/17.
@@ -17,16 +20,23 @@ import co.miniforge.corey.mediatracker.model.MediaItem;
 
 public class MediaRecyclerAdapter extends RecyclerView.Adapter {
     private List<MediaItem> mediaItems = new LinkedList<>();
+   // private List<MovieModel> movieItems = new LinkedList<>();
+   // private List<TVModel> tvItems = new LinkedList<>();
+    //private List<YouTubeModel> youTubeItems = new LinkedList<>();
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflated = LayoutInflater.from(parent.getContext()).inflate(R.layout.media_item, parent, false);
+         View inflated = LayoutInflater.from(parent.getContext()).inflate(R.layout.media_item, parent, false);
         return new MediaViewHolder(inflated);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((MediaViewHolder)holder).bindData(mediaItems.get(position));
+       // ((MediaViewHolder)holder).bindData(movieItems.get(position));
+        //((MediaViewHolder)holder).bindData(tvItems.get(position));
+        //((MediaViewHolder)holder).bindData(youTubeItems.get(position));
     }
 
     @Override
@@ -36,6 +46,10 @@ public class MediaRecyclerAdapter extends RecyclerView.Adapter {
 
     public void updateList(List<MediaItem> mediaItems){
         this.mediaItems = mediaItems;
-        notifyDataSetChanged();
+        //this.movieItems = movieItems;
+        //this.tvItems = tvItems;
+        //this.youTubeItems = youTubeItems;
+         notifyDataSetChanged();
+
     }
 }

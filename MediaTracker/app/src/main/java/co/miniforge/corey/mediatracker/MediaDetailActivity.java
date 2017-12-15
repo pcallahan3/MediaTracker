@@ -70,8 +70,6 @@ public class MediaDetailActivity extends AppCompatActivity {
                 Intent newIntent = new Intent(getApplicationContext(), MyListActivity.class);
 
                 newIntent.putExtra(MyListActivity.mediaExtra, mediaItem.toJson().toString());
-
-
                 //Start activity
                 startActivity(newIntent);
 
